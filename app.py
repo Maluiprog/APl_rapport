@@ -2,9 +2,11 @@ import streamlit as st
 import boto3
 import datetime
 
-# Skapa en DynamoDB-resurs utan att ange nycklar
-dynamodb = boto3.resource('dynamodb')
+AWS_REGION = "us-east-1"  # Ändra detta till din önskade region, t.ex. "eu-west-1" för Irland
+# Skapa en DynamoDB-resurs med specificerad region
+dynamodb = boto3.resource('dynamodb', region_name=AWS_REGION)
 table = dynamodb.Table("inlagg")
+
 
 today = datetime.datetime.today()
 week_num = today.isocalendar()[1]
